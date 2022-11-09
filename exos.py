@@ -153,17 +153,41 @@ def jeuRecursifV2(lettre):
 #FIN
 
 #EXO1
-#Renvoyer/Afficher un message
+
+#Faire une fonction qui concatène deux haînes de caractères, les séparant avec une virgule
+def concanténation(strA, strB):
+    #Je m'assure que strA soit bien str
+    stringA = str(strA)
+    #Je m'assure que strB soit bien str
+    stringB = str(strB)
+    #Retourne strA + ", " +strB
+    return  strA + ", " + strB
+
+concanténation("Brinig", "Owen")
+
 
 #EXO2
-#Faire une fonction qui itère sur tous les index d'un tableau renvoyant une chaîne de caractère
-#avec l'ensemble des occurences d'un chiffre e.g.:
+#Faire une fonction qui itère sur tous les index d'un tableau renvoyant une chaîne de caractère avec l'ensemble des occurences d'un chiffre e.g.:
 #Pour tableau = [0,1,1,1,0,1,1,0,1]
 #la fonction(tableau, 0) doit renvoyer "0, 4, 7"
 
-
-
-
+tableau = [0,1,1,1,0,1,1,0,1]
+#Définir la fonction findIndex qui itère sur le tableau, cherchant l'index des différentes occurences de x
+def findIndex(tableau, cible):
+    #Définir i un index de départ
+    i = 0
+    #Définir chaineRetour telle qu'une chaine de caractère vide
+    chaineRetour = str()
+    #Tant que i est différent du nombre d'éléments dans le tableau
+    while (i != len(tableau)):
+        #Alors j'attribue à une variable la valeur de tableau à l'index
+        selected = tableau[i]
+        #j'incrémente i de 1/la condition d'arrêt de la boucle
+        i = i + 1
+        #Si selected est égal à x
+        if selected == cible:
+            #Alors j'assigne le retour de concatWithComa tel que : concatWithComa(chaineRetour, 1) à chaineRetour
+            chaineRetour = concanténation(chaineRetour, 1)
 
 
 
