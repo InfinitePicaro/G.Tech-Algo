@@ -61,20 +61,3 @@
 
 
 #FIN
-
-
-
-
-
-
-
-
-
-
-
-
-    #Tant que le joueur et le cpu ont un choix identique
-        #Ecrire "Egalité!"
-        #Redéfinir une variable cpu qui choisira aléatoirement pierre, feuille ou ciseau à partir du tableau game
-    #Sinon si cpu et player ont des choix différents 
-        #
