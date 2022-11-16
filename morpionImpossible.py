@@ -28,10 +28,10 @@ def impossibleMorpion():
             choix = False
             while not choix:
                 print("C'est à toi de jouer !")
-                choixY = int(input("coordonné x : "))
-                choixX = int(input("coordonné y : "))
+                choixX = int(input("Ligne : "))
+                choixY = int(input("Colonne : "))
                 if tab[choixX][choixY] != "_":
-                    print("Case occupée, fais un autre choix")
+                    print("case occupée, fais un autre choix")
                 else:
                     tab[choixX][choixY] = playerSymbole[curPlayerID]
                     choix = True
@@ -101,7 +101,7 @@ def impossibleMorpion():
             print(f"{curPlayer[curPlayerID]} a gagné")
             break
         elif action == 9:
-            print("Egalité...")
+            print("égalité...")
             break
         
         curPlayerID = curPlayerID * -1
