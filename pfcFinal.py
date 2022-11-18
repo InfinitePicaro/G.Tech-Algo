@@ -64,13 +64,4 @@ pierreFeuilleCiseaux()
 #FIN
 
 
-
-
-    #Créer un tableau game = ["pierre","feuille","ciseaux"]
-    #game = ["pierre","feuille","ciseaux"]
-
-
-
-
-
   
