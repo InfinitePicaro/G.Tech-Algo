@@ -19,23 +19,28 @@ def morpion():
 
     #Tant que True
     while True:
-        #Ecrire le nom du joueur dont c'est le tor en fonction de l'ID du joueur actuel dans curPlayer
-        print(f"{curPlayer[curPlayerID]}, c'est à toi !")
+        #Définir la variable booléenne check à False
+        check = False
+        #Tant que check n'est pas vrai
+        while not check:
+            #Ecrire le nom du joueur dont c'est le tor en fonction de l'ID du joueur actuel dans curPlayer
+            print(f"{curPlayer[curPlayerID]}, c'est à toi !")
 
-        #Définir la variable choixX avec comme valeur le retour de l'éxecution de la fonction int(input"coordonné x : "))
-        choixX = int(input("coordonné x : "))
-        #Définir la variable choixY avec comme valeur le retour de l'éxecution de la fonction int(input("coordonné y : "))
-        choixY = int(input("coordonné y : "))
+            #Définir la variable choixX avec comme valeur le retour de l'éxecution de la fonction int(input"coordonné x : "))
+            choixX = int(input("coordonné x : "))
+            #Définir la variable choixY avec comme valeur le retour de l'éxecution de la fonction int(input("coordonné y : "))
+            choixY = int(input("coordonné y : "))
 
-        #Si tab[choixX][choixY] est différent du caractère "_"
-        if tab[choixX][choixY] != "_":
-            #Ecrire "Case occupée, fais un autre choix."
-            print("Case occupée, fais un autre choix.")
-        
-        #Sinon
-        else:
-            #Assigner le symbole du joueur aux cordonnées choixX, choixY dans tab
-            tab[choixX][choixY] = playerSymbole[curPlayerID]
+            #Si tab[choixX][choixY] est différent du caractère "_"
+            if tab[choixX][choixY] != "_":
+                #Ecrire "Case occupée, fais un autre choix."
+                print("Case occupée, fais un autre choix.")
+            
+            #Sinon
+            else:
+                #Assigner le symbole du joueur aux cordonnées choixX, choixY dans tab
+                tab[choixX][choixY] = playerSymbole[curPlayerID]
+                check = True
 
         #Pour chaque élément dans tab
         for i in tab:
@@ -58,3 +63,6 @@ def morpion():
 
 #Exécuter la fonction morpion
 morpion()
+
+
+#Régler problème jeu avance quand même quand on met sur noptre propre symbole sur une case déjà occupée
