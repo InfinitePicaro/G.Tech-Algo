@@ -28,16 +28,16 @@ def pierreFeuilleCiseaux():
         #Si playerChoice égal 0 et cpuChoice égal 1 ou playerChoice égal 1 et cpuChoice 2 ou playerChoice 2 égal et cpuChoice égal 0
         elif (playerChoice == 0 and cpuChoice == 1) or (playerChoice == 1 and cpuChoice == 2) or (playerChoice == 2 and cpuChoice == 0):
             #Ecrire "Victoire!"
-            print("Victoire!")
+            print("Défaite!")
             #Incrémenter scorePlater de 1
-            scorePlayer += 1
+            scoreCpu += 1
 
         #Si playerChoice égal 1 et cpuChoice égal 0 ou playerChoice égal 2 et cpuChoice 1 ou playerChoice 0 égal et cpuChoice égal 2
         elif (playerChoice == 1 and cpuChoice == 0) or (playerChoice == 2 and cpuChoice == 1) or (playerChoice == 0 and cpuChoice == 2):
             #Ecrire "Défaite!"
-            print("Défaite!")
+            print("Victoire!")
             #Incrémenter scoreCpu de 1
-            scoreCpu += 1
+            scorePlayer += 1
 
         #Sinon playerChoice ne renvoi à aucun index de game
         else:
@@ -53,7 +53,7 @@ def pierreFeuilleCiseaux():
     #Sinon scoreCPU égal à 2:
     else:
         #Ecrire scoreCpu"/"scorePlayer ". Vous avez perdu."
-        print(scoreCpu, "/", scoreCpu, ". Vous avez perdu.")      
+        print(scoreCpu, "/", scorePlayer, ". Vous avez perdu.")      
         
 
 #Executer la fonction pierreFeuilleCiseaux
