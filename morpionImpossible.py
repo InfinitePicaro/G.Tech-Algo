@@ -1,197 +1,220 @@
+# on importe une class de copy car la copie de liste de fonctionne pas
 import copy
 
-#Lance une partie où l'IA/Cortana gagne à chaque fois ou fait une égalité
+# lance une partie de morpion ou l'IA gagne tout le temps ou fait une égalité.
 def impossibleMorpion():
 
-    #Initialise le tableau 3X3
+    # initialise le tableau de jeu au format 3 x 3.
     tab = [ ["_" for i in range(3)] for i in range(3) ]
-    #Définir un dictionnaire dans lequel on stock les noms des joueurs
+    
+    # definir le dictionaire qui contient les noms des joueurs en fonction de leur ID.
     curPlayer = {
         1: "Joueur",
         -1: "Cortana"
     }
 
-    #Initialiser une variable curPlayerID égale à 1 dans laquelle on définit l'ID du joueur actuel
+    # initialise l'ID du joueur actuel à 1.
     curPlayerID = 1
 
-    #Définir un dictionnaire dans lequel on stock les symboles des joueurs en fonction de leur ID
+    # définir le dictionaire qui contient le symbole d'un joueur en fonction de son ID.
     playerSymbole = {
         1: "O",
         -1: "X"
     }
 
-    #Rentrer la première action de l'IA/Cortana
+    # modifie le tableau d'après la première action de l'IA
     tab[1][1] = "X"
-    #Créer une variable action égale à1 dans laquelle on défini le nombre d'actions passées depuis le début de la partie
+
+    # initialise la variable du nombre d'action de la partie à 1.
     action = 1
 
-    #Tant que True
+    # tant que True
     while True:
-
+        #Ecrire "-------------"
+        print("-------------")
         #Pour i dans tab
         for i in tab:
-            #Ecrire i
-            print(i)
+            #Créer une vriable ligne et y assigner la valeur "|"
+            ligne = "|"
+            #Pour j dans i
+            for j in i:
+                #Ajouter à ligne f" {j} |"
+                ligne += f" {j} |"
+            #Ecrire ligne
+            print(ligne)
+            #Ecrire "-------------"
+            print("-------------")
 
-        #Incrémenter action de 1
+        # incrémenter action de 1
         action += 1
 
-        #Si curPlayerID est égal à 1
+        # si curPlayerID égal
         if curPlayerID == 1:
-            #Définir une variable boolean choix à False
+            # définir une variable booléenne à False
             choix = False
-            #Tant que choix n'est pas vrai
+            # tant que choix n'est pas égal à True.
             while not choix:
-                #Ecrire "C'est à toi de jouer !"
+                # écrire "c'est à toi de jouer"
                 print("C'est à toi de jouer !")
-                #Définir la variable choixX avec comme valeur le retour de l'éxecution de la fonction input("Ligne :")
-                choixX = int(input("Ligne (1 à 3) : ")) - 1
-                #Définir la variable choixY avec comme valeur le retour de l'éxecution de la fonction input("Colonne :")
-                choixY = int(input("Colonne (1 à 3) : ")) - 1
-                #Si l'index de tab correspondant à [choixX][choixY] est différent du caractère "_"
+                # définir choixX avec le retour de la fonction input("Ligne (1 à 3): ")
+                choixX = int(input("Ligne (1 à 3): ")) - 1
+                # définir choixX avec le retour de la fonction input("Colonne (1 à 3): ")
+                choixY = int(input("Colonne (1 à 3): ")) - 1
+                # si tab[choixX][choixY] est égal à "_".
                 if tab[choixX][choixY] != "_":
-                    #Ecrire "Case occupée, fais un autre choix."
-                    print("Case occupée, fais un autre choix.")
-                #Sinon
+                    # alors, écrire "case occupée, fais un autre choix"
+                    print("case occupée, fais un autre choix")
+                # sinon
                 else:
-                    #Afficher le symbole de curPlayerID à [choixX][choixY]
+                    # assigner à tab[choixX][choixY] la valeur de playerSymbole[curPlayerID]
                     tab[choixX][choixY] = playerSymbole[curPlayerID]
-                    #Assigner True à la variable choix
+                    # assigner à choix la valeur True
                     choix = True
-        #Sinon
+        # sinon
         else:
-            #Ecrire "Au tour de Cortana"
+            # écrire "Au tour de Cortana"
             print("Au tour de Cortana")
 
-        #Ecrire ""
+        # écrire un ligne vide afin de créer un espace.
         print("")
-        #Si action est égal à 3 et curPlayerID est égal à -1
+        # si action est égal à 3 et curPlayerID est égal à -1.
         if action == 3 and curPlayerID == -1:
-            #Si la coordonnée [0][0] est égal à "_"
+            # alors, si tab[0][0] est égal à "_"
             if tab[0][0] == "_":
-                #Assigner "X" au choix
+                # alors modifier tab[0][0] par "X"
                 tab[0][0] = "X"
-            #Sinon
+            # sinon
             else:
-                #Assigner à la cooordonnée tab[0][2] la valeur "X"
+                # modifier tab[0][2] par "X"
                 tab[0][2] = "X"
-
-        #Si action est égal à 5 et curPlayerID est égal à 1
+        
+        # si action est égal à 5 et curPlayerID est égal à -1
         if action == 5 and curPlayerID == -1:
-            #Définir une variable boolean check à False
+            # définir check avec la valeur False
             check = False
-            #Pour x allant de 0 à 2
+            # pour x allant de 0 à 2.
             for x in range(3):
-                #Si check n'est pas vrai
+                # si check n'est pas égal à True
                 if not check:
-                    #Pour y allant de 0 à 2
+                    # pour y allant de 0 à 2.
                     for y in range(3):
-                        #Si tab[x][y] est égal au caractère "_"
+                        # si tab[x][y] est égal à "_".
                         if tab[x][y] == "_":
-                            #Initialiser la variable tempTab avec comme valeur la copie de tab
+                            # alors définir tempTab avec une copie de tab
                             tempTab = copy.deepcopy(tab)
-                            #Assigner à la coordonnée tempTab[x][y] le symbole "O"
+                            # modifier tempTab[x][y] par "O"
                             tempTab[x][y] = "O"
-                            #Si l'une des conditions de victoire du Joueur est remplie
+                            # si une des condition de victoire du joueur est vraie dans tempTab.
                             if (tempTab[0][0] == "O" and tempTab[0][1] == "O" and tempTab[0][2] == "O") or (tempTab[1][0] == "O" and tempTab[1][1] == "O" and tempTab[1][2] == "O") or (tempTab[2][0] == "O" and tempTab[2][1] == "O" and tempTab[2][2] == "O") or (tempTab[0][0] == "O" and tempTab[1][0] == "O" and tempTab[2][0] == "O") or (tempTab[0][1] == "O" and tempTab[1][1] == "O" and tempTab[2][1] == "O") or (tempTab[0][2] == "O" and tempTab[1][2] == "O" and tempTab[2][2] == "O") or (tempTab[0][0] == "O" and tempTab[1][1] == "O" and tempTab[2][2] == "O") or (tempTab[0][2] == "O" and tempTab[1][1] == "O" and tempTab[2][0] == "O"):
-                                #Assigner aux coordonnées tab[x][y] la valeur "X"
+                                # modifier tab[x][y] par "X"
                                 tab[x][y] = "X"
-                                #Modifier check pour check égal True
+                                # modifier check par True
                                 check = True
-                                #Casser la boucle
+                                # casser la boucle actuelle
                                 break
-            #Si check n'est pas vrai et tab[2][2] est égal à "_"
+            # si check n'est pas True et tab[2][2] égal "_".
             if not check and tab[2][2] == "_":
-                #Assigner à la coordonnée tab[2][2] la valeur "X"
+                # modifier tab[2][2] par "X"
                 tab[2][2] = "X"
-            #Sinon si check n'est pas vrai
+            # sinon si check n'est pas True
             elif not check:
-                #Assigner à la coordonnée tab[2][0] la valeur "X"
+                # modifier tab[2][0] par "X"
                 tab[2][0] = "X"
         
-        #Si action est égal à 7
+        # si action égal 7
         if action == 7:
-            #Définir une variable boolean check à False
+            # définir check par False
             check = False
-            #Pour x allant de 0 à 2
+            # pour x allant de 0 à 2
             for x in range(3):
-                #Si check n'est pas vrai
+                # si check n'est pas True
                 if not check:
-                    #Pour y allant de 0 à 2
+                    # pour y allant de 0 à 2
                     for y in range(3):
-                        #Si la coordonnée tab[x][y] est égal à la valeur "_"
+                        # si  tab[x][y] égal "_"
                         if tab[x][y] == "_":
-                            #Initialiser la variable tempTab avec comme valeur la copie de tab
+                            # définir tempTab avec une copie de tab
                             tempTab = copy.deepcopy(tab)
-                             #Assigner à la coordonnée tempTab[x][y] le symbole "X"
+                            # modifier tempTab[x][y] par "X"
                             tempTab[x][y] = "X"
-                            #Si l'une des conditions de victoire de l'IA/Cortana est remplie
+                            # si une des conditions de victoire de l'IA est vraie dans tempTab
                             if (tempTab[0][0] == "X" and tempTab[0][1] == "X" and tempTab[0][2] == "X") or (tempTab[1][0] == "X" and tempTab[1][1] == "X" and tempTab[1][2] == "X") or (tempTab[2][0] == "X" and tempTab[2][1] == "X" and tempTab[2][2] == "X") or (tempTab[0][0] == "X" and tempTab[1][0] == "X" and tempTab[2][0] == "X") or (tempTab[0][1] == "X" and tempTab[1][1] == "X" and tempTab[2][1] == "X") or (tempTab[0][2] == "X" and tempTab[1][2] == "X" and tempTab[2][2] == "X") or (tempTab[0][0] == "X" and tempTab[1][1] == "X" and tempTab[2][2] == "X") or (tempTab[0][2] == "X" and tempTab[1][1] == "X" and tempTab[2][0] == "X"):
-                                #Assigner aux coordonnées tab[x][y] la valeur "X"
+                                # modifier tab[x][y] par "X"
                                 tab[x][y] = "X"
-                                #Modifier check pour check égal True
+                                # modifier check par True
                                 check = True
-                                #Casser la boucle
+                                # casser la boucle actuelle
                                 break
-            #Si check n'est pas vrai
+            # si check n'est pas True
             if not check:
-                #Modifier check avec False
+                # modifier check par False
                 check = False
-                #Pour x allant de 0 à 2
+                # pour x allant de 0 à 2
                 for x in range(3):
-                    #Si check n'est pas vrai
+                    # si check n'est pas vrai
                     if not check:
-                        #Pour y allant de 0 à 2
+                        # pour y allant de 0 à 2
                         for y in range(3):
-                            #Si tab[x][y] est égal à la valeur "_"
+                            # si tab[x][y] égal "_"
                             if tab[x][y] == "_":
-                                #Assigner aux coordonnées tab[x][y] la valeur "X"
+                                # modifier tab[x][y] par "X"
                                 tab[x][y] = "X"
-                                #Modifier check pour check égal True
+                                # modifier check par True
                                 check = True
-                                #Casser la boucle
+                                # casser la boucle actuelle
                                 break
         
-        #Si action est égal à 9
+        # si action égal 9
         if action == 9:
-            #Définir une variable boolean check à False
+            # modifier check par False
             check = False
-            #Pour x allant de 0 à 2
+            # pour x allant de 0 à 2
             for x in range(3):
-                #Si check n'est pas vrai
+                # si check n'est pas vrai
                 if not check:
-                    #Pour y allant de 0 à 2
+                    # pour y allant de 0 à 2
                     for y in range(3):
-                        #Si tab[x][y] est égal à la valeur "_"
+                        # si tab[x][y] égal "_"
                         if tab[x][y] == "_":
-                            #Assigner aux coordonnées tab[x][y] la valeur "X"
+                            # modifier tab[x][y] par "X"
                             tab[x][y] = "X"
-                            #Modifier check pour check égal True
+                            # modifier check par True
                             check = True
-                            #Casser la boucle
+                            # casser la boucle actuelle
                             break
-
-        #Intialiser une vraiable cur égal au symbole de l'ID du joueur actuel
+        
+        # définir cur avec playerSymbole[curPlayerID], le symbole du joueur actuel
         cur = playerSymbole[curPlayerID]
-        #Si l'une des conditions de victoire est remplie
+        # si une des conditions de victoire du joueur actuel est vraie dans tab
         if (tab[0][0] == cur and tab[0][1] == cur and tab[0][2] == cur) or (tab[1][0] == cur and tab[1][1] == cur and tab[1][2] == cur) or (tab[2][0] == cur and tab[2][1] == cur and tab[2][2] == cur) or (tab[0][0] == cur and tab[1][0] == cur and tab[2][0] == cur) or (tab[0][1] == cur and tab[1][1] == cur and tab[2][1] == cur) or (tab[0][2] == cur and tab[1][2] == cur and tab[2][2] == cur) or (tab[0][0] == cur and tab[1][1] == cur and tab[2][2] == cur) or (tab[0][2] == cur and tab[1][1] == cur and tab[2][0] == cur):
+            # pour i dans tab
+        #Ecrire "-------------"
+            print("-------------")
             #Pour i dans tab
             for i in tab:
-                #Ecrire i
-                print(i)
-            #Ecrire "{curPlayer[curPlayerID]} a gagné"
+                #Créer une vriable ligne et y assigner la valeur "|"
+                ligne = "|"
+                #Pour j dans i
+                for j in i:
+                    #Ajouter à ligne f" {j} |"
+                    ligne += f" {j} |"
+                #Ecrire ligne
+                print(ligne)
+                #Ecrire "-------------"
+                print("-------------")
+            # écrire quel joueur a gagné
             print(f"{curPlayer[curPlayerID]} a gagné")
-            #Casser la boucle
+            # casser la boucle principale
             break
-        #Sinon si action est égal à 9
+        # sinon si action égal 9
         elif action == 9:
-            #Ecrire "Egalité..."
-            print("Egalité...")
-            #Casser la boucle
+            # alors écrire "égalité..."
+            print("égalité...")
+            # casser la boucle principale
             break
         
-        #Multiplier la variable curPlayerID par -1
+        # multiplier la valeur de curPlayerID par -1
         curPlayerID = curPlayerID * -1
 
-#Exécuter la fonction impossibleMorpion
+# exécuter la fonction impossibleMorpion()
 impossibleMorpion()
