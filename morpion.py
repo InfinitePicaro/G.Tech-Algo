@@ -41,18 +41,31 @@ def morpion():
             if choixX == -1 and choixY == -1 and bullet == 1:
                 # check égal True
                 check = True
+                #assigner à une variable x1 une valeur aléatoire entre 0 et 2
                 x1=randint(0,2)
+                #assigner à une variable y1 une valeur aléatoire entre 0 et 2
                 y1=randint(0,2)
+                #Assigner à une variable x2 la valeur None
                 x2=None
+                #Assigner à une variable y2 la valeur None
                 y2=None
+                #Tant que x1 est différent de x2 et y1 est différent de y2
                 while x1 != x2 and y1!= y2:
+                    #Assigner à la variable x2 une valeur aléatoire entre 0 et 2
                     x2=randint(0,2)
+                    #Assigner à la variable y2 une valeur aléatoire entre 0 et 2
                     y2=randint(0,2)
+                #Ecrire x1 et y1
                 print(x1, y1)
+                #Ecrire x2 et y2
                 print(x2, y2)
+                #Assigner aux coordonnées x1 y1 le symbole lié à l'ID du joueur actuel dans curPlayer
                 tab[x1][y1] = playerSymbole[curPlayerID]
+                #Assigner aux coordonnées x2 y2 le symbole lié à l'ID du joueur actuel dans curPlayer
                 tab[x2][y2] = playerSymbole[curPlayerID]
+                #Chnager l'ID du joueur actuel dans curPlayerID
                 curPlayerID = curPlayerID * -1
+                #Soustraire 1 à bullet
                 bullet -= 1
             # sinon si choixX et choixY sont égal à -1 et que bullet n'est pas égal à 1
             elif choixX == -1 and choixY == -1 and bullet != 1:
@@ -68,6 +81,7 @@ def morpion():
             else:
                 # assigner le symbole du joueur aux coordonnées choixX, choixY dans tab.
                 tab[choixX-1][choixY-1] = playerSymbole[curPlayerID]
+                #Assigner la valeur True à check
                 check = True
 
         # pour chaque element de tab
