@@ -1,4 +1,4 @@
-# on importe une class de copy car la copie de liste de fonctionne pas
+#on importe une class de copy car la copie de liste de fonctionne pas
 import copy
 
 # lance une partie de morpion ou l'IA gagne tout le temps ou fait une égalité.
